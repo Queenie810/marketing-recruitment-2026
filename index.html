@@ -215,11 +215,11 @@
     .job-item {
       background: white; border: 1.5px solid var(--border);
       border-radius: 14px; padding: 20px 24px;
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 12px;
+      display: flex; flex-direction: column; gap: 12px;
       cursor: pointer; transition: all 0.2s;
     }
     .job-item:hover { border-color: var(--red); box-shadow: 0 4px 16px rgba(255,36,66,0.08); }
+    .job-item-top { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
     .job-info { flex: 1; min-width: 200px; }
     .job-tbh {
       display: inline-flex; align-items: center; justify-content: center;
@@ -243,6 +243,25 @@
       text-decoration: none; transition: all 0.2s; white-space: nowrap;
     }
     .job-btn:hover { background: var(--red); color: white; }
+    /* 岗位流程条 */
+    .job-flow {
+      display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+      padding: 10px 14px; background: #FAFAFA; border-radius: 10px;
+      border: 1px solid #F0E0E3; font-size: 12px;
+    }
+    .job-flow-step {
+      display: flex; align-items: center; gap: 5px;
+      color: var(--text-secondary);
+    }
+    .job-flow-step .step-badge {
+      background: var(--red); color: white;
+      width: 18px; height: 18px; border-radius: 50%;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 10px; font-weight: 700; flex-shrink: 0;
+    }
+    .job-flow-arrow { color: #ccc; font-size: 12px; }
+    .job-flow a { color: var(--red); text-decoration: none; font-weight: 600; }
+    .job-flow a:hover { text-decoration: underline; }
 
     /* ---- PROCESS SECTION ---- */
     .process-section { background: var(--bg-warm); }
@@ -687,364 +706,669 @@
   <div class="job-panel active" id="panel-all">
     <!-- P0 -->
     <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/17582?active=channel','_blank')">
-      <div class="job-info">
-        <div class="job-title">电商市场交易大促营销</div>
-        <div class="job-meta">电商市场 · 用户市场组 · 来克 · 心愿之城/年货节/双十一大促</div>
-      </div><span class="job-tbh">×3</span>
-      
-      <span class="job-priority p0">P0 急缺</span>
-      <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/17582?active=channel" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      <div class="job-item-top">
+        <div class="job-info">
+          <div class="job-title">电商市场交易大促营销</div>
+          <div class="job-meta">电商市场 · 用户市场组 · 来克 · 心愿之城/年货节/双十一大促</div>
+        </div><span class="job-tbh">×3</span>
+        <span class="job-priority p0">P0 急缺</span>
+        <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/17582?active=channel" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      </div>
+      <div class="job-flow">
+        <div class="job-flow-step"><span class="step-badge">1</span> 简历筛选 → 一面（来克）</div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">2</span> <a href="https://docs.xiaohongshu.com/sheet/fdf7f581c03f9828e28b9662a8a33126?smParams=4FoVLeYo5O5SalH0JkjCOGcpcj" target="_blank" onclick="event.stopPropagation()">又思专场二面</a></div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">3</span> <a href="https://docs.xiaohongshu.com/sheet/f0e6be8b11e68b3a8aa5fb9e74fb9a14?smParams=4FoVLeYo5O5SalH0JytSioWnq1" target="_blank" onclick="event.stopPropagation()">电商专场终面</a></div>
+      </div>
     </div>
     <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/17823','_blank')">
-      <div class="job-info">
-        <div class="job-title">电商市场B端品牌传播专家</div>
-        <div class="job-meta">电商市场 · 电商市场&外训 · 伽马 · 商家大会/电商学习中心</div>
-      </div><span class="job-tbh">×3</span>
-      
-      <span class="job-priority p0">P0 急缺</span>
-      <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/17823" target="_blank" onclick="event.stopPropagation()">查看职位</a>
-    </div>
-    <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/18136','_blank')">
-      <div class="job-info">
-        <div class="job-title">商业市场策略传播</div>
-        <div class="job-meta">商业市场 · 策略传播 · 允浩 · 宏观策略传播，办WILL大会/写博客/做博客</div>
-      </div><span class="job-tbh">×1</span>
-      
-      <span class="job-priority p0">P0 急缺</span>
-      <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/18136" target="_blank" onclick="event.stopPropagation()">查看职位</a>
-    </div>
-    <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/11916','_blank')">
-      <div class="job-info">
-        <div class="job-title">商业化-快消IP营销策划</div>
-        <div class="job-meta">IP营销中心 · 行业营销四组 · 地球 · 缺乳品方向</div>
-      </div><span class="job-tbh">×1</span>
-      
-      <span class="job-priority p0">P0 急缺</span>
-      <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/11916" target="_blank" onclick="event.stopPropagation()">查看职位</a>
-    </div>
-    <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/11916','_blank')">
-      <div class="job-info">
-        <div class="job-title">商业化-快消行业IP营销专家</div>
-        <div class="job-meta">IP营销中心 · 行业营销四组 · 地球</div>
-      </div><span class="job-tbh">×1</span>
-      
-      <span class="job-priority p0">P0 急缺</span>
-      <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/11916" target="_blank" onclick="event.stopPropagation()">查看职位</a>
-    </div>
-    <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/14883','_blank')">
-      <div class="job-info">
-        <div class="job-title">商业化-大生服&互联网行业IP营销专家</div>
-        <div class="job-meta">IP营销中心 · 行业营销三组 · 存希（含汰换）· 急缺奢品！</div>
-      </div><span class="job-tbh">×3</span>
-      
-      <span class="job-priority p0">P0 急缺</span>
-      <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/14883" target="_blank" onclick="event.stopPropagation()">查看职位</a>
-    </div>
-    <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/15173?active=base','_blank')">
-      <div class="job-info">
-        <div class="job-title">商业市场活动策划</div>
-        <div class="job-meta">IP营销中心 · 媒介与PM管理 · 阿江 POC · WILL大会/行业峰会，1000人+经验优先</div>
-      </div><span class="job-tbh">×1</span>
-      
-      <span class="job-priority p0">P0 急缺</span>
-      <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/15173?active=base" target="_blank" onclick="event.stopPropagation()">查看职位</a>
-    </div>
-    <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/17489','_blank')">
-      <div class="job-info">
-        <div class="job-title">业务培训专家</div>
-        <div class="job-meta">培训中台 · 业务内训 · 伽马 · 能力诊断+培训落地，非纯接需</div>
-      </div><span class="job-tbh">×2</span>
-      
-      <span class="job-priority p0">P0 急缺</span>
-      <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/17489" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      <div class="job-item-top">
+        <div class="job-info">
+          <div class="job-title">电商市场B端品牌传播专家</div>
+          <div class="job-meta">电商市场 · 电商市场&外训 · 伽马 · 商家大会/电商学习中心</div>
+        </div><span class="job-tbh">×3</span>
+        <span class="job-priority p0">P0 急缺</span>
+        <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/17823" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      </div>
+      <div class="job-flow">
+        <div class="job-flow-step"><span class="step-badge">1</span> 简历筛选 → 一面（伽马）</div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">2</span> <a href="https://docs.xiaohongshu.com/sheet/fdf7f581c03f9828e28b9662a8a33126?smParams=4FoVLeYo5O5SalH0JkjCOGcpcj" target="_blank" onclick="event.stopPropagation()">又思专场二面</a></div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">3</span> <a href="https://docs.xiaohongshu.com/sheet/f0e6be8b11e68b3a8aa5fb9e74fb9a14?smParams=4FoVLeYo5O5SalH0JytSioWnq1" target="_blank" onclick="event.stopPropagation()">电商专场终面</a></div>
+      </div>
     </div>
     <!-- P1 -->
+    <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/18136','_blank')">
+      <div class="job-item-top">
+        <div class="job-info">
+          <div class="job-title">商业市场策略传播</div>
+          <div class="job-meta">商业市场 · 策略传播 · 允浩 · 宏观策略传播，办WILL大会/写博客/做博客</div>
+        </div><span class="job-tbh">×1</span>
+        <span class="job-priority p1">P1</span>
+        <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/18136" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      </div>
+      <div class="job-flow">
+        <div class="job-flow-step"><span class="step-badge">1</span> 简历筛选 → 一面（允浩）</div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">2</span> <a href="https://docs.xiaohongshu.com/sheet/fdf7f581c03f9828e28b9662a8a33126?smParams=4FoVLeYo5O5SalH0JkjCOGcpcj" target="_blank" onclick="event.stopPropagation()">又思专场二面</a></div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">3</span> <a href="https://docs.xiaohongshu.com/sheet/92f221707b891d1a773d311f34090973?smParams=665Xcn6MwhBL2HhQHs4aG6Kcwneifn9EFfuWhPTJH2BCHZ8oQwl5QxHoMAkjm7vT6MENXcNP3cBelD4sH" target="_blank" onclick="event.stopPropagation()">CBD专场终面</a></div>
+      </div>
+    </div>
     <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/15093','_blank')">
-      <div class="job-info">
-        <div class="job-title">商业市场——营销增长运营</div>
-        <div class="job-meta">商业市场 · 营销增长 · 雷米 · 增长运营/用增背景，中小商家拉新</div>
-      </div><span class="job-tbh">×1</span>
-      
-      <span class="job-priority p1">P1</span>
-      <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/15093" target="_blank" onclick="event.stopPropagation()">查看职位</a>
-    </div>
-    <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/14189','_blank')">
-      <div class="job-info">
-        <div class="job-title">商业化-平台大事件IP营销专家</div>
-        <div class="job-meta">IP营销中心 · 平台大事件 · 佩吉（汰换）· 夜人节/慢人节/Redgala</div>
-      </div><span class="job-tbh">×1</span>
-      
-      <span class="job-priority p1">P1</span>
-      <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/14189" target="_blank" onclick="event.stopPropagation()">查看职位</a>
-    </div>
-    <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/19834?active=channel','_blank')">
-      <div class="job-info">
-        <div class="job-title">商业化-汽车行业IP营销专家</div>
-        <div class="job-meta">IP营销中心 · 互动营销 · 吉森（汰换）· 懂车、爱车、高能量</div>
-      </div><span class="job-tbh">×2</span>
-      
-      <span class="job-priority p1">P1</span>
-      <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/19834?active=channel" target="_blank" onclick="event.stopPropagation()">查看职位</a>
-    </div>
-    <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/8212','_blank')">
-      <div class="job-info">
-        <div class="job-title">商业化-内容运营IP营销专家</div>
-        <div class="job-meta">IP营销中心 · 内容运营 · 地球 · UGC内容运营，"纯玩派对"IP</div>
-      </div><span class="job-tbh">×1</span>
-      
-      <span class="job-priority p1">P1</span>
-      <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/8212" target="_blank" onclick="event.stopPropagation()">查看职位</a>
-    </div>
-    <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/7669','_blank')">
-      <div class="job-info">
-        <div class="job-title">商业化娱乐营销</div>
-        <div class="job-meta">IP营销中心 · 娱乐营销 · 科林（汰换）· 明星/热点活动，重创意重策划</div>
-      </div><span class="job-tbh">×1</span>
-      
-      <span class="job-priority p1">P1</span>
-      <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/7669" target="_blank" onclick="event.stopPropagation()">查看职位</a>
-    </div>
-    <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/15125','_blank')">
-      <div class="job-info">
-        <div class="job-title">商业化-平台大事件PM</div>
-        <div class="job-meta">IP营销中心 · 媒介与PM管理 · 佩吉（汰换）· 大事件创意+对客综合体</div>
-      </div><span class="job-tbh">×1</span>
-      
-      <span class="job-priority p1">P1</span>
-      <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/15125" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      <div class="job-item-top">
+        <div class="job-info">
+          <div class="job-title">商业市场——营销增长运营</div>
+          <div class="job-meta">商业市场 · 营销增长 · 雷米 · 增长运营/用增背景，中小商家拉新</div>
+        </div><span class="job-tbh">×1</span>
+        <span class="job-priority p1">P1</span>
+        <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/15093" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      </div>
+      <div class="job-flow">
+        <div class="job-flow-step"><span class="step-badge">1</span> 简历筛选 → 一面（雷米）</div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">2</span> <a href="https://docs.xiaohongshu.com/sheet/fdf7f581c03f9828e28b9662a8a33126?smParams=4FoVLeYo5O5SalH0JkjCOGcpcj" target="_blank" onclick="event.stopPropagation()">又思专场二面</a></div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">3</span> <a href="https://docs.xiaohongshu.com/sheet/92f221707b891d1a773d311f34090973?smParams=665Xcn6MwhBL2HhQHs4aG6Kcwneifn9EFfuWhPTJH2BCHZ8oQwl5QxHoMAkjm7vT6MENXcNP3cBelD4sH" target="_blank" onclick="event.stopPropagation()">CBD专场终面</a></div>
+      </div>
     </div>
     <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/17824','_blank')">
-      <div class="job-info">
-        <div class="job-title">商业化-媒介专家</div>
-        <div class="job-meta">IP营销中心 · 媒介与PM管理 · 需懂AI，B站/字节强对标</div>
-      </div><span class="job-tbh">×1</span>
-      
-      <span class="job-priority p1">P1</span>
-      <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/17824" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      <div class="job-item-top">
+        <div class="job-info">
+          <div class="job-title">商业化-媒介专家</div>
+          <div class="job-meta">IP营销中心 · 媒介与PM管理 · 佩吉 · 需懂AI，B站/字节强对标</div>
+        </div><span class="job-tbh">×1</span>
+        <span class="job-priority p1">P1</span>
+        <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/17824" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      </div>
+      <div class="job-flow">
+        <div class="job-flow-step"><span class="step-badge">1</span> 简历筛选 → 一面（佩吉）</div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">2</span> <a href="https://docs.xiaohongshu.com/sheet/fdf7f581c03f9828e28b9662a8a33126?smParams=4FoVLeYo5O5SalH0JkjCOGcpcj" target="_blank" onclick="event.stopPropagation()">又思专场二面</a></div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">3</span> <a href="https://docs.xiaohongshu.com/sheet/92f221707b891d1a773d311f34090973?smParams=665Xcn6MwhBL2HhQHs4aG6Kcwneifn9EFfuWhPTJH2BCHZ8oQwl5QxHoMAkjm7vT6MENXcNP3cBelD4sH" target="_blank" onclick="event.stopPropagation()">CBD专场终面</a></div>
+      </div>
+    </div>
+    <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/15173?active=base','_blank')">
+      <div class="job-item-top">
+        <div class="job-info">
+          <div class="job-title">商业化-活动策划</div>
+          <div class="job-meta">IP营销中心 · 媒介与PM管理 · 阿江 POC · WILL大会/行业峰会，1000人+经验优先</div>
+        </div><span class="job-tbh">×1</span>
+        <span class="job-priority p1">P1</span>
+        <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/15173?active=base" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      </div>
+      <div class="job-flow">
+        <div class="job-flow-step"><span class="step-badge">1</span> 简历筛选 → 一面（阿江）</div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">2</span> <a href="https://docs.xiaohongshu.com/sheet/fdf7f581c03f9828e28b9662a8a33126?smParams=4FoVLeYo5O5SalH0JkjCOGcpcj" target="_blank" onclick="event.stopPropagation()">又思专场二面</a></div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">3</span> <a href="https://docs.xiaohongshu.com/sheet/92f221707b891d1a773d311f34090973?smParams=665Xcn6MwhBL2HhQHs4aG6Kcwneifn9EFfuWhPTJH2BCHZ8oQwl5QxHoMAkjm7vT6MENXcNP3cBelD4sH" target="_blank" onclick="event.stopPropagation()">CBD专场终面</a></div>
+      </div>
+    </div>
+    <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/17489','_blank')">
+      <div class="job-item-top">
+        <div class="job-info">
+          <div class="job-title">业务培训专家</div>
+          <div class="job-meta">培训中台 · 业务内训 · 伽马 · 能力诊断+培训落地，非纯接需</div>
+        </div><span class="job-tbh">×2</span>
+        <span class="job-priority p1">P1</span>
+        <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/17489" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      </div>
+      <div class="job-flow">
+        <div class="job-flow-step"><span class="step-badge">1</span> 简历筛选 → 一面（伽马）</div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">2</span> <a href="https://docs.xiaohongshu.com/sheet/fdf7f581c03f9828e28b9662a8a33126?smParams=4FoVLeYo5O5SalH0JkjCOGcpcj" target="_blank" onclick="event.stopPropagation()">又思专场二面</a></div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">3</span> <a href="https://docs.xiaohongshu.com/sheet/92f221707b891d1a773d311f34090973?smParams=665Xcn6MwhBL2HhQHs4aG6Kcwneifn9EFfuWhPTJH2BCHZ8oQwl5QxHoMAkjm7vT6MENXcNP3cBelD4sH" target="_blank" onclick="event.stopPropagation()">CBD专场终面</a></div>
+      </div>
+    </div>
+    <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/14189','_blank')">
+      <div class="job-item-top">
+        <div class="job-info">
+          <div class="job-title">商业化-平台大事件IP营销专家</div>
+          <div class="job-meta">IP营销中心 · 平台大事件 · 佩吉（汰换）· 夜人节/慢人节/Redgala</div>
+        </div><span class="job-tbh">×1</span>
+        <span class="job-priority p1">P1</span>
+        <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/14189" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      </div>
+      <div class="job-flow">
+        <div class="job-flow-step"><span class="step-badge">1</span> 简历筛选 → 一面（佩吉）</div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">2</span> <a href="https://docs.xiaohongshu.com/sheet/fdf7f581c03f9828e28b9662a8a33126?smParams=4FoVLeYo5O5SalH0JkjCOGcpcj" target="_blank" onclick="event.stopPropagation()">又思专场二面</a></div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">3</span> <a href="https://docs.xiaohongshu.com/sheet/92f221707b891d1a773d311f34090973?smParams=665Xcn6MwhBL2HhQHs4aG6Kcwneifn9EFfuWhPTJH2BCHZ8oQwl5QxHoMAkjm7vT6MENXcNP3cBelD4sH" target="_blank" onclick="event.stopPropagation()">CBD专场终面</a></div>
+      </div>
+    </div>
+    <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/19834?active=channel','_blank')">
+      <div class="job-item-top">
+        <div class="job-info">
+          <div class="job-title">商业化-汽车行业IP营销专家</div>
+          <div class="job-meta">IP营销中心 · 互动营销 · 吉森（汰换）· 懂车、爱车、高能量</div>
+        </div><span class="job-tbh">×2</span>
+        <span class="job-priority p1">P1</span>
+        <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/19834?active=channel" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      </div>
+      <div class="job-flow">
+        <div class="job-flow-step"><span class="step-badge">1</span> 简历筛选 → 一面（吉森）</div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">2</span> <a href="https://docs.xiaohongshu.com/sheet/fdf7f581c03f9828e28b9662a8a33126?smParams=4FoVLeYo5O5SalH0JkjCOGcpcj" target="_blank" onclick="event.stopPropagation()">又思专场二面</a></div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">3</span> <a href="https://docs.xiaohongshu.com/sheet/92f221707b891d1a773d311f34090973?smParams=665Xcn6MwhBL2HhQHs4aG6Kcwneifn9EFfuWhPTJH2BCHZ8oQwl5QxHoMAkjm7vT6MENXcNP3cBelD4sH" target="_blank" onclick="event.stopPropagation()">CBD专场终面</a></div>
+      </div>
+    </div>
+    <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/8212','_blank')">
+      <div class="job-item-top">
+        <div class="job-info">
+          <div class="job-title">商业化-内容运营IP营销专家</div>
+          <div class="job-meta">IP营销中心 · 内容运营 · 地球 · UGC内容运营，"纯玩派对"IP</div>
+        </div><span class="job-tbh">×1</span>
+        <span class="job-priority p1">P1</span>
+        <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/8212" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      </div>
+      <div class="job-flow">
+        <div class="job-flow-step"><span class="step-badge">1</span> 简历筛选 → 一面（地球）</div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">2</span> <a href="https://docs.xiaohongshu.com/sheet/fdf7f581c03f9828e28b9662a8a33126?smParams=4FoVLeYo5O5SalH0JkjCOGcpcj" target="_blank" onclick="event.stopPropagation()">又思专场二面</a></div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">3</span> <a href="https://docs.xiaohongshu.com/sheet/92f221707b891d1a773d311f34090973?smParams=665Xcn6MwhBL2HhQHs4aG6Kcwneifn9EFfuWhPTJH2BCHZ8oQwl5QxHoMAkjm7vT6MENXcNP3cBelD4sH" target="_blank" onclick="event.stopPropagation()">CBD专场终面</a></div>
+      </div>
+    </div>
+    <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/7669','_blank')">
+      <div class="job-item-top">
+        <div class="job-info">
+          <div class="job-title">商业化娱乐营销</div>
+          <div class="job-meta">IP营销中心 · 娱乐营销 · 科林（汰换）· 明星/热点活动，重创意重策划</div>
+        </div><span class="job-tbh">×1</span>
+        <span class="job-priority p1">P1</span>
+        <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/7669" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      </div>
+      <div class="job-flow">
+        <div class="job-flow-step"><span class="step-badge">1</span> 简历筛选 → 一面（科林）</div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">2</span> <a href="https://docs.xiaohongshu.com/sheet/fdf7f581c03f9828e28b9662a8a33126?smParams=4FoVLeYo5O5SalH0JkjCOGcpcj" target="_blank" onclick="event.stopPropagation()">又思专场二面</a></div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">3</span> <a href="https://docs.xiaohongshu.com/sheet/92f221707b891d1a773d311f34090973?smParams=665Xcn6MwhBL2HhQHs4aG6Kcwneifn9EFfuWhPTJH2BCHZ8oQwl5QxHoMAkjm7vT6MENXcNP3cBelD4sH" target="_blank" onclick="event.stopPropagation()">CBD专场终面</a></div>
+      </div>
+    </div>
+    <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/15125','_blank')">
+      <div class="job-item-top">
+        <div class="job-info">
+          <div class="job-title">商业化-平台大事件PM</div>
+          <div class="job-meta">IP营销中心 · 媒介与PM管理 · 佩吉（汰换）· 大事件创意+对客综合体</div>
+        </div><span class="job-tbh">×1</span>
+        <span class="job-priority p1">P1</span>
+        <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/15125" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      </div>
+      <div class="job-flow">
+        <div class="job-flow-step"><span class="step-badge">1</span> 简历筛选 → 一面（佩吉）</div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">2</span> <a href="https://docs.xiaohongshu.com/sheet/fdf7f581c03f9828e28b9662a8a33126?smParams=4FoVLeYo5O5SalH0JkjCOGcpcj" target="_blank" onclick="event.stopPropagation()">又思专场二面</a></div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">3</span> <a href="https://docs.xiaohongshu.com/sheet/92f221707b891d1a773d311f34090973?smParams=665Xcn6MwhBL2HhQHs4aG6Kcwneifn9EFfuWhPTJH2BCHZ8oQwl5QxHoMAkjm7vT6MENXcNP3cBelD4sH" target="_blank" onclick="event.stopPropagation()">CBD专场终面</a></div>
+      </div>
     </div>
     <div class="job-item">
-      <div class="job-info">
-        <div class="job-title">节点营销策划</div>
-        <div class="job-meta">IP营销中心 · 节点营销 · 未希（汰换）</div>
-      </div><span class="job-tbh">×1</span>
-      
-      <span class="job-priority p1">P1</span>
-      <span class="job-btn" style="background:#f5f5f5;color:#999;cursor:default;">暂无链接</span>
+      <div class="job-item-top">
+        <div class="job-info">
+          <div class="job-title">节点营销策划</div>
+          <div class="job-meta">IP营销中心 · 节点营销 · 未希（汰换）</div>
+        </div><span class="job-tbh">×1</span>
+        <span class="job-priority p1">P1</span>
+        <span class="job-btn" style="background:#f5f5f5;color:#999;cursor:default;">暂无链接</span>
+      </div>
+      <div class="job-flow">
+        <div class="job-flow-step"><span class="step-badge">1</span> 简历筛选 → 一面（未希）</div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">2</span> <a href="https://docs.xiaohongshu.com/sheet/fdf7f581c03f9828e28b9662a8a33126?smParams=4FoVLeYo5O5SalH0JkjCOGcpcj" target="_blank" onclick="event.stopPropagation()">又思专场二面</a></div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">3</span> <a href="https://docs.xiaohongshu.com/sheet/92f221707b891d1a773d311f34090973?smParams=665Xcn6MwhBL2HhQHs4aG6Kcwneifn9EFfuWhPTJH2BCHZ8oQwl5QxHoMAkjm7vT6MENXcNP3cBelD4sH" target="_blank" onclick="event.stopPropagation()">CBD专场终面</a></div>
+      </div>
     </div>
     <!-- P2 -->
+    <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/11916','_blank')">
+      <div class="job-item-top">
+        <div class="job-info">
+          <div class="job-title">商业化-快消IP营销策划</div>
+          <div class="job-meta">IP营销中心 · 行业营销四组 · 地球 · 缺乳品方向</div>
+        </div><span class="job-tbh">×1</span>
+        <span class="job-priority p2">P2</span>
+        <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/11916" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      </div>
+      <div class="job-flow">
+        <div class="job-flow-step"><span class="step-badge">1</span> 简历筛选 → 一面（地球）</div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">2</span> <a href="https://docs.xiaohongshu.com/sheet/fdf7f581c03f9828e28b9662a8a33126?smParams=4FoVLeYo5O5SalH0JkjCOGcpcj" target="_blank" onclick="event.stopPropagation()">又思专场二面</a></div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">3</span> <a href="https://docs.xiaohongshu.com/sheet/92f221707b891d1a773d311f34090973?smParams=665Xcn6MwhBL2HhQHs4aG6Kcwneifn9EFfuWhPTJH2BCHZ8oQwl5QxHoMAkjm7vT6MENXcNP3cBelD4sH" target="_blank" onclick="event.stopPropagation()">CBD专场终面</a></div>
+      </div>
+    </div>
+    <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/11916','_blank')">
+      <div class="job-item-top">
+        <div class="job-info">
+          <div class="job-title">商业化-快消行业IP营销专家</div>
+          <div class="job-meta">IP营销中心 · 行业营销四组 · 地球</div>
+        </div><span class="job-tbh">×1</span>
+        <span class="job-priority p2">P2</span>
+        <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/11916" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      </div>
+      <div class="job-flow">
+        <div class="job-flow-step"><span class="step-badge">1</span> 简历筛选 → 一面（地球）</div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">2</span> <a href="https://docs.xiaohongshu.com/sheet/fdf7f581c03f9828e28b9662a8a33126?smParams=4FoVLeYo5O5SalH0JkjCOGcpcj" target="_blank" onclick="event.stopPropagation()">又思专场二面</a></div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">3</span> <a href="https://docs.xiaohongshu.com/sheet/92f221707b891d1a773d311f34090973?smParams=665Xcn6MwhBL2HhQHs4aG6Kcwneifn9EFfuWhPTJH2BCHZ8oQwl5QxHoMAkjm7vT6MENXcNP3cBelD4sH" target="_blank" onclick="event.stopPropagation()">CBD专场终面</a></div>
+      </div>
+    </div>
+    <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/14883','_blank')">
+      <div class="job-item-top">
+        <div class="job-info">
+          <div class="job-title">商业化-大生服&互联网行业IP营销专家</div>
+          <div class="job-meta">IP营销中心 · 行业营销三组 · 存希（含汰换）· 急缺奢品！</div>
+        </div><span class="job-tbh">×3</span>
+        <span class="job-priority p2">P2</span>
+        <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/14883" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      </div>
+      <div class="job-flow">
+        <div class="job-flow-step"><span class="step-badge">1</span> 简历筛选 → 一面（存希）</div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">2</span> <a href="https://docs.xiaohongshu.com/sheet/fdf7f581c03f9828e28b9662a8a33126?smParams=4FoVLeYo5O5SalH0JkjCOGcpcj" target="_blank" onclick="event.stopPropagation()">又思专场二面</a></div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">3</span> <a href="https://docs.xiaohongshu.com/sheet/92f221707b891d1a773d311f34090973?smParams=665Xcn6MwhBL2HhQHs4aG6Kcwneifn9EFfuWhPTJH2BCHZ8oQwl5QxHoMAkjm7vT6MENXcNP3cBelD4sH" target="_blank" onclick="event.stopPropagation()">CBD专场终面</a></div>
+      </div>
+    </div>
     <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/15767','_blank')">
-      <div class="job-info">
-        <div class="job-title">商业化-美护/服饰行业IP营销专家</div>
-        <div class="job-meta">IP营销中心 · 行业营销一组 · 尤弥（汰换）· 策划脑+审美</div>
-      </div><span class="job-tbh">×1</span>
-      
-      <span class="job-priority p2">P2</span>
-      <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/15767" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      <div class="job-item-top">
+        <div class="job-info">
+          <div class="job-title">商业化-美护/服饰行业IP营销专家</div>
+          <div class="job-meta">IP营销中心 · 行业营销一组 · 尤弥（汰换）· 策划脑+审美</div>
+        </div><span class="job-tbh">×1</span>
+        <span class="job-priority p2">P2</span>
+        <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/15767" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      </div>
+      <div class="job-flow">
+        <div class="job-flow-step"><span class="step-badge">1</span> 简历筛选 → 一面（尤弥）</div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">2</span> <a href="https://docs.xiaohongshu.com/sheet/fdf7f581c03f9828e28b9662a8a33126?smParams=4FoVLeYo5O5SalH0JkjCOGcpcj" target="_blank" onclick="event.stopPropagation()">又思专场二面</a></div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">3</span> <a href="https://docs.xiaohongshu.com/sheet/92f221707b891d1a773d311f34090973?smParams=665Xcn6MwhBL2HhQHs4aG6Kcwneifn9EFfuWhPTJH2BCHZ8oQwl5QxHoMAkjm7vT6MENXcNP3cBelD4sH" target="_blank" onclick="event.stopPropagation()">CBD专场终面</a></div>
+      </div>
     </div>
     <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/10103?active=channel','_blank')">
-      <div class="job-info">
-        <div class="job-title">商业化-耐消行业IP营销专家</div>
-        <div class="job-meta">IP营销中心 · 行业营销二组 · 未希（汰换）</div>
-      </div><span class="job-tbh">×1</span>
-      
-      <span class="job-priority p2">P2</span>
-      <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/10103?active=channel" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      <div class="job-item-top">
+        <div class="job-info">
+          <div class="job-title">商业化-耐消行业IP营销专家</div>
+          <div class="job-meta">IP营销中心 · 行业营销二组 · 未希（汰换）</div>
+        </div><span class="job-tbh">×1</span>
+        <span class="job-priority p2">P2</span>
+        <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/10103?active=channel" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      </div>
+      <div class="job-flow">
+        <div class="job-flow-step"><span class="step-badge">1</span> 简历筛选 → 一面（未希）</div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">2</span> <a href="https://docs.xiaohongshu.com/sheet/fdf7f581c03f9828e28b9662a8a33126?smParams=4FoVLeYo5O5SalH0JkjCOGcpcj" target="_blank" onclick="event.stopPropagation()">又思专场二面</a></div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">3</span> <a href="https://docs.xiaohongshu.com/sheet/92f221707b891d1a773d311f34090973?smParams=665Xcn6MwhBL2HhQHs4aG6Kcwneifn9EFfuWhPTJH2BCHZ8oQwl5QxHoMAkjm7vT6MENXcNP3cBelD4sH" target="_blank" onclick="event.stopPropagation()">CBD专场终面</a></div>
+      </div>
     </div>
     <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/19038','_blank')">
-      <div class="job-info">
-        <div class="job-title">商业化-行业PM专家（大生服+互联网）</div>
-        <div class="job-meta">IP营销中心 · 行业营销三组 · 存希（汰换）· 完全打开，互联网PM经验优先</div>
-      </div><span class="job-tbh">×1</span>
-      
-      <span class="job-priority p2">P2</span>
-      <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/19038" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      <div class="job-item-top">
+        <div class="job-info">
+          <div class="job-title">商业化-行业PM专家（大生服+互联网）</div>
+          <div class="job-meta">IP营销中心 · 行业营销三组 · 存希（汰换）· 完全打开，互联网PM经验优先</div>
+        </div><span class="job-tbh">×1</span>
+        <span class="job-priority p2">P2</span>
+        <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/19038" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      </div>
+      <div class="job-flow">
+        <div class="job-flow-step"><span class="step-badge">1</span> 简历筛选 → 一面（存希）</div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">2</span> <a href="https://docs.xiaohongshu.com/sheet/fdf7f581c03f9828e28b9662a8a33126?smParams=4FoVLeYo5O5SalH0JkjCOGcpcj" target="_blank" onclick="event.stopPropagation()">又思专场二面</a></div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">3</span> <a href="https://docs.xiaohongshu.com/sheet/92f221707b891d1a773d311f34090973?smParams=665Xcn6MwhBL2HhQHs4aG6Kcwneifn9EFfuWhPTJH2BCHZ8oQwl5QxHoMAkjm7vT6MENXcNP3cBelD4sH" target="_blank" onclick="event.stopPropagation()">CBD专场终面</a></div>
+      </div>
     </div>
   </div>
 
   <!-- EC -->
   <div class="job-panel" id="panel-ec">
     <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/17582?active=channel','_blank')">
-      <div class="job-info">
-        <div class="job-title">电商市场交易大促营销</div>
-        <div class="job-meta">来克 · 心愿之城/年货节/双十一大促</div>
-      </div><span class="job-tbh">×3</span>
-      
-      <span class="job-priority p0">P0 急缺</span>
-      <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/17582?active=channel" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      <div class="job-item-top">
+        <div class="job-info">
+          <div class="job-title">电商市场交易大促营销</div>
+          <div class="job-meta">来克 · 心愿之城/年货节/双十一大促</div>
+        </div><span class="job-tbh">×3</span>
+        <span class="job-priority p0">P0 急缺</span>
+        <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/17582?active=channel" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      </div>
+      <div class="job-flow">
+        <div class="job-flow-step"><span class="step-badge">1</span> 简历筛选 → 一面（来克）</div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">2</span> <a href="https://docs.xiaohongshu.com/sheet/fdf7f581c03f9828e28b9662a8a33126?smParams=4FoVLeYo5O5SalH0JkjCOGcpcj" target="_blank" onclick="event.stopPropagation()">又思专场二面</a></div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">3</span> <a href="https://docs.xiaohongshu.com/sheet/f0e6be8b11e68b3a8aa5fb9e74fb9a14?smParams=4FoVLeYo5O5SalH0JytSioWnq1" target="_blank" onclick="event.stopPropagation()">电商专场终面</a></div>
+      </div>
     </div>
     <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/17823','_blank')">
-      <div class="job-info">
-        <div class="job-title">电商市场B端品牌传播专家</div>
-        <div class="job-meta">伽马 · 商家大会/电商学习中心平台</div>
-      </div><span class="job-tbh">×3</span>
-      
-      <span class="job-priority p0">P0 急缺</span>
-      <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/17823" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      <div class="job-item-top">
+        <div class="job-info">
+          <div class="job-title">电商市场B端品牌传播专家</div>
+          <div class="job-meta">伽马 · 商家大会/电商学习中心平台</div>
+        </div><span class="job-tbh">×3</span>
+        <span class="job-priority p0">P0 急缺</span>
+        <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/17823" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      </div>
+      <div class="job-flow">
+        <div class="job-flow-step"><span class="step-badge">1</span> 简历筛选 → 一面（伽马）</div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">2</span> <a href="https://docs.xiaohongshu.com/sheet/fdf7f581c03f9828e28b9662a8a33126?smParams=4FoVLeYo5O5SalH0JkjCOGcpcj" target="_blank" onclick="event.stopPropagation()">又思专场二面</a></div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">3</span> <a href="https://docs.xiaohongshu.com/sheet/f0e6be8b11e68b3a8aa5fb9e74fb9a14?smParams=4FoVLeYo5O5SalH0JytSioWnq1" target="_blank" onclick="event.stopPropagation()">电商专场终面</a></div>
+      </div>
     </div>
   </div>
 
   <!-- IP -->
   <div class="job-panel" id="panel-ip">
-    <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/11916','_blank')">
-      <div class="job-info">
-        <div class="job-title">商业化-快消IP营销策划</div>
-        <div class="job-meta">地球 · 缺乳品方向</div>
-      </div><span class="job-tbh">×1</span>
-      
-      <span class="job-priority p0">P0 急缺</span>
-      <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/11916" target="_blank" onclick="event.stopPropagation()">查看职位</a>
-    </div>
-    <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/11916','_blank')">
-      <div class="job-info">
-        <div class="job-title">商业化-快消行业IP营销专家</div>
-        <div class="job-meta">地球</div>
-      </div><span class="job-tbh">×1</span>
-      
-      <span class="job-priority p0">P0 急缺</span>
-      <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/11916" target="_blank" onclick="event.stopPropagation()">查看职位</a>
-    </div>
-    <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/14883','_blank')">
-      <div class="job-info">
-        <div class="job-title">商业化-大生服&互联网行业IP营销专家</div>
-        <div class="job-meta">存希（含汰换）· 急缺奢品！</div>
-      </div><span class="job-tbh">×3</span>
-      
-      <span class="job-priority p0">P0 急缺</span>
-      <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/14883" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+    <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/17824','_blank')">
+      <div class="job-item-top">
+        <div class="job-info">
+          <div class="job-title">商业化-媒介专家</div>
+          <div class="job-meta">佩吉 · 需懂AI，B站/字节强对标</div>
+        </div><span class="job-tbh">×1</span>
+        <span class="job-priority p1">P1</span>
+        <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/17824" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      </div>
+      <div class="job-flow">
+        <div class="job-flow-step"><span class="step-badge">1</span> 简历筛选 → 一面（佩吉）</div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">2</span> <a href="https://docs.xiaohongshu.com/sheet/fdf7f581c03f9828e28b9662a8a33126?smParams=4FoVLeYo5O5SalH0JkjCOGcpcj" target="_blank" onclick="event.stopPropagation()">又思专场二面</a></div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">3</span> <a href="https://docs.xiaohongshu.com/sheet/92f221707b891d1a773d311f34090973?smParams=665Xcn6MwhBL2HhQHs4aG6Kcwneifn9EFfuWhPTJH2BCHZ8oQwl5QxHoMAkjm7vT6MENXcNP3cBelD4sH" target="_blank" onclick="event.stopPropagation()">CBD专场终面</a></div>
+      </div>
     </div>
     <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/15173?active=base','_blank')">
-      <div class="job-info">
-        <div class="job-title">商业市场活动策划</div>
-        <div class="job-meta">阿江 POC · WILL大会/行业峰会，1000人+活动经验优先</div>
-      </div><span class="job-tbh">×1</span>
-      
-      <span class="job-priority p0">P0 急缺</span>
-      <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/15173?active=base" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      <div class="job-item-top">
+        <div class="job-info">
+          <div class="job-title">商业化-活动策划</div>
+          <div class="job-meta">阿江 POC · WILL大会/行业峰会，1000人+活动经验优先</div>
+        </div><span class="job-tbh">×1</span>
+        <span class="job-priority p1">P1</span>
+        <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/15173?active=base" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      </div>
+      <div class="job-flow">
+        <div class="job-flow-step"><span class="step-badge">1</span> 简历筛选 → 一面（阿江）</div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">2</span> <a href="https://docs.xiaohongshu.com/sheet/fdf7f581c03f9828e28b9662a8a33126?smParams=4FoVLeYo5O5SalH0JkjCOGcpcj" target="_blank" onclick="event.stopPropagation()">又思专场二面</a></div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">3</span> <a href="https://docs.xiaohongshu.com/sheet/92f221707b891d1a773d311f34090973?smParams=665Xcn6MwhBL2HhQHs4aG6Kcwneifn9EFfuWhPTJH2BCHZ8oQwl5QxHoMAkjm7vT6MENXcNP3cBelD4sH" target="_blank" onclick="event.stopPropagation()">CBD专场终面</a></div>
+      </div>
     </div>
     <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/14189','_blank')">
-      <div class="job-info">
-        <div class="job-title">商业化-平台大事件IP营销专家</div>
-        <div class="job-meta">佩吉（汰换）· 夜人节/慢人节/Redgala</div>
-      </div><span class="job-tbh">×1</span>
-      
-      <span class="job-priority p1">P1</span>
-      <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/14189" target="_blank" onclick="event.stopPropagation()">查看职位</a>
-    </div>
-    <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/19834?active=channel','_blank')">
-      <div class="job-info">
-        <div class="job-title">商业化-汽车行业IP营销专家</div>
-        <div class="job-meta">吉森（汰换）· 懂车、爱车、高能量</div>
-      </div><span class="job-tbh">×2</span>
-      
-      <span class="job-priority p1">P1</span>
-      <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/19834?active=channel" target="_blank" onclick="event.stopPropagation()">查看职位</a>
-    </div>
-    <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/8212','_blank')">
-      <div class="job-info">
-        <div class="job-title">商业化-内容运营IP营销专家</div>
-        <div class="job-meta">地球 · UGC内容运营，"纯玩派对"IP</div>
-      </div><span class="job-tbh">×1</span>
-      
-      <span class="job-priority p1">P1</span>
-      <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/8212" target="_blank" onclick="event.stopPropagation()">查看职位</a>
-    </div>
-    <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/7669','_blank')">
-      <div class="job-info">
-        <div class="job-title">商业化娱乐营销</div>
-        <div class="job-meta">科林（汰换）· 明星/热点活动，重创意重策划</div>
-      </div><span class="job-tbh">×1</span>
-      
-      <span class="job-priority p1">P1</span>
-      <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/7669" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      <div class="job-item-top">
+        <div class="job-info">
+          <div class="job-title">商业化-平台大事件IP营销专家</div>
+          <div class="job-meta">佩吉（汰换）· 夜人节/慢人节/Redgala</div>
+        </div><span class="job-tbh">×1</span>
+        <span class="job-priority p1">P1</span>
+        <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/14189" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      </div>
+      <div class="job-flow">
+        <div class="job-flow-step"><span class="step-badge">1</span> 简历筛选 → 一面（佩吉）</div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">2</span> <a href="https://docs.xiaohongshu.com/sheet/fdf7f581c03f9828e28b9662a8a33126?smParams=4FoVLeYo5O5SalH0JkjCOGcpcj" target="_blank" onclick="event.stopPropagation()">又思专场二面</a></div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">3</span> <a href="https://docs.xiaohongshu.com/sheet/92f221707b891d1a773d311f34090973?smParams=665Xcn6MwhBL2HhQHs4aG6Kcwneifn9EFfuWhPTJH2BCHZ8oQwl5QxHoMAkjm7vT6MENXcNP3cBelD4sH" target="_blank" onclick="event.stopPropagation()">CBD专场终面</a></div>
+      </div>
     </div>
     <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/15125','_blank')">
-      <div class="job-info">
-        <div class="job-title">商业化-平台大事件PM</div>
-        <div class="job-meta">佩吉（汰换）· 大事件创意+对客综合体</div>
-      </div><span class="job-tbh">×1</span>
-      
-      <span class="job-priority p1">P1</span>
-      <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/15125" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      <div class="job-item-top">
+        <div class="job-info">
+          <div class="job-title">商业化-平台大事件PM</div>
+          <div class="job-meta">佩吉（汰换）· 大事件创意+对客综合体</div>
+        </div><span class="job-tbh">×1</span>
+        <span class="job-priority p1">P1</span>
+        <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/15125" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      </div>
+      <div class="job-flow">
+        <div class="job-flow-step"><span class="step-badge">1</span> 简历筛选 → 一面（佩吉）</div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">2</span> <a href="https://docs.xiaohongshu.com/sheet/fdf7f581c03f9828e28b9662a8a33126?smParams=4FoVLeYo5O5SalH0JkjCOGcpcj" target="_blank" onclick="event.stopPropagation()">又思专场二面</a></div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">3</span> <a href="https://docs.xiaohongshu.com/sheet/92f221707b891d1a773d311f34090973?smParams=665Xcn6MwhBL2HhQHs4aG6Kcwneifn9EFfuWhPTJH2BCHZ8oQwl5QxHoMAkjm7vT6MENXcNP3cBelD4sH" target="_blank" onclick="event.stopPropagation()">CBD专场终面</a></div>
+      </div>
     </div>
-    <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/17824','_blank')">
-      <div class="job-info">
-        <div class="job-title">商业化-媒介专家</div>
-        <div class="job-meta">TBH *1 · 需懂AI，B站/字节强对标</div>
-      </div><span class="job-tbh">×1</span>
-      
-      <span class="job-priority p1">P1</span>
-      <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/17824" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+    <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/19834?active=channel','_blank')">
+      <div class="job-item-top">
+        <div class="job-info">
+          <div class="job-title">商业化-汽车行业IP营销专家</div>
+          <div class="job-meta">吉森（汰换）· 懂车、爱车、高能量</div>
+        </div><span class="job-tbh">×2</span>
+        <span class="job-priority p1">P1</span>
+        <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/19834?active=channel" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      </div>
+      <div class="job-flow">
+        <div class="job-flow-step"><span class="step-badge">1</span> 简历筛选 → 一面（吉森）</div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">2</span> <a href="https://docs.xiaohongshu.com/sheet/fdf7f581c03f9828e28b9662a8a33126?smParams=4FoVLeYo5O5SalH0JkjCOGcpcj" target="_blank" onclick="event.stopPropagation()">又思专场二面</a></div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">3</span> <a href="https://docs.xiaohongshu.com/sheet/92f221707b891d1a773d311f34090973?smParams=665Xcn6MwhBL2HhQHs4aG6Kcwneifn9EFfuWhPTJH2BCHZ8oQwl5QxHoMAkjm7vT6MENXcNP3cBelD4sH" target="_blank" onclick="event.stopPropagation()">CBD专场终面</a></div>
+      </div>
+    </div>
+    <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/8212','_blank')">
+      <div class="job-item-top">
+        <div class="job-info">
+          <div class="job-title">商业化-内容运营IP营销专家</div>
+          <div class="job-meta">地球 · UGC内容运营，"纯玩派对"IP</div>
+        </div><span class="job-tbh">×1</span>
+        <span class="job-priority p1">P1</span>
+        <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/8212" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      </div>
+      <div class="job-flow">
+        <div class="job-flow-step"><span class="step-badge">1</span> 简历筛选 → 一面（地球）</div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">2</span> <a href="https://docs.xiaohongshu.com/sheet/fdf7f581c03f9828e28b9662a8a33126?smParams=4FoVLeYo5O5SalH0JkjCOGcpcj" target="_blank" onclick="event.stopPropagation()">又思专场二面</a></div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">3</span> <a href="https://docs.xiaohongshu.com/sheet/92f221707b891d1a773d311f34090973?smParams=665Xcn6MwhBL2HhQHs4aG6Kcwneifn9EFfuWhPTJH2BCHZ8oQwl5QxHoMAkjm7vT6MENXcNP3cBelD4sH" target="_blank" onclick="event.stopPropagation()">CBD专场终面</a></div>
+      </div>
+    </div>
+    <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/7669','_blank')">
+      <div class="job-item-top">
+        <div class="job-info">
+          <div class="job-title">商业化娱乐营销</div>
+          <div class="job-meta">科林（汰换）· 明星/热点活动，重创意重策划</div>
+        </div><span class="job-tbh">×1</span>
+        <span class="job-priority p1">P1</span>
+        <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/7669" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      </div>
+      <div class="job-flow">
+        <div class="job-flow-step"><span class="step-badge">1</span> 简历筛选 → 一面（科林）</div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">2</span> <a href="https://docs.xiaohongshu.com/sheet/fdf7f581c03f9828e28b9662a8a33126?smParams=4FoVLeYo5O5SalH0JkjCOGcpcj" target="_blank" onclick="event.stopPropagation()">又思专场二面</a></div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">3</span> <a href="https://docs.xiaohongshu.com/sheet/92f221707b891d1a773d311f34090973?smParams=665Xcn6MwhBL2HhQHs4aG6Kcwneifn9EFfuWhPTJH2BCHZ8oQwl5QxHoMAkjm7vT6MENXcNP3cBelD4sH" target="_blank" onclick="event.stopPropagation()">CBD专场终面</a></div>
+      </div>
     </div>
     <div class="job-item">
-      <div class="job-info">
-        <div class="job-title">节点营销策划</div>
-        <div class="job-meta">未希（汰换）</div>
-      </div><span class="job-tbh">×1</span>
-      
-      <span class="job-priority p1">P1</span>
-      <span class="job-btn" style="background:#f5f5f5;color:#999;cursor:default;">暂无链接</span>
+      <div class="job-item-top">
+        <div class="job-info">
+          <div class="job-title">节点营销策划</div>
+          <div class="job-meta">未希（汰换）</div>
+        </div><span class="job-tbh">×1</span>
+        <span class="job-priority p1">P1</span>
+        <span class="job-btn" style="background:#f5f5f5;color:#999;cursor:default;">暂无链接</span>
+      </div>
+      <div class="job-flow">
+        <div class="job-flow-step"><span class="step-badge">1</span> 简历筛选 → 一面（未希）</div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">2</span> <a href="https://docs.xiaohongshu.com/sheet/fdf7f581c03f9828e28b9662a8a33126?smParams=4FoVLeYo5O5SalH0JkjCOGcpcj" target="_blank" onclick="event.stopPropagation()">又思专场二面</a></div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">3</span> <a href="https://docs.xiaohongshu.com/sheet/92f221707b891d1a773d311f34090973?smParams=665Xcn6MwhBL2HhQHs4aG6Kcwneifn9EFfuWhPTJH2BCHZ8oQwl5QxHoMAkjm7vT6MENXcNP3cBelD4sH" target="_blank" onclick="event.stopPropagation()">CBD专场终面</a></div>
+      </div>
+    </div>
+    <!-- P2 -->
+    <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/11916','_blank')">
+      <div class="job-item-top">
+        <div class="job-info">
+          <div class="job-title">商业化-快消IP营销策划</div>
+          <div class="job-meta">地球 · 缺乳品方向</div>
+        </div><span class="job-tbh">×1</span>
+        <span class="job-priority p2">P2</span>
+        <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/11916" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      </div>
+      <div class="job-flow">
+        <div class="job-flow-step"><span class="step-badge">1</span> 简历筛选 → 一面（地球）</div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">2</span> <a href="https://docs.xiaohongshu.com/sheet/fdf7f581c03f9828e28b9662a8a33126?smParams=4FoVLeYo5O5SalH0JkjCOGcpcj" target="_blank" onclick="event.stopPropagation()">又思专场二面</a></div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">3</span> <a href="https://docs.xiaohongshu.com/sheet/92f221707b891d1a773d311f34090973?smParams=665Xcn6MwhBL2HhQHs4aG6Kcwneifn9EFfuWhPTJH2BCHZ8oQwl5QxHoMAkjm7vT6MENXcNP3cBelD4sH" target="_blank" onclick="event.stopPropagation()">CBD专场终面</a></div>
+      </div>
+    </div>
+    <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/11916','_blank')">
+      <div class="job-item-top">
+        <div class="job-info">
+          <div class="job-title">商业化-快消行业IP营销专家</div>
+          <div class="job-meta">地球</div>
+        </div><span class="job-tbh">×1</span>
+        <span class="job-priority p2">P2</span>
+        <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/11916" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      </div>
+      <div class="job-flow">
+        <div class="job-flow-step"><span class="step-badge">1</span> 简历筛选 → 一面（地球）</div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">2</span> <a href="https://docs.xiaohongshu.com/sheet/fdf7f581c03f9828e28b9662a8a33126?smParams=4FoVLeYo5O5SalH0JkjCOGcpcj" target="_blank" onclick="event.stopPropagation()">又思专场二面</a></div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">3</span> <a href="https://docs.xiaohongshu.com/sheet/92f221707b891d1a773d311f34090973?smParams=665Xcn6MwhBL2HhQHs4aG6Kcwneifn9EFfuWhPTJH2BCHZ8oQwl5QxHoMAkjm7vT6MENXcNP3cBelD4sH" target="_blank" onclick="event.stopPropagation()">CBD专场终面</a></div>
+      </div>
+    </div>
+    <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/14883','_blank')">
+      <div class="job-item-top">
+        <div class="job-info">
+          <div class="job-title">商业化-大生服&互联网行业IP营销专家</div>
+          <div class="job-meta">存希（含汰换）· 急缺奢品！</div>
+        </div><span class="job-tbh">×3</span>
+        <span class="job-priority p2">P2</span>
+        <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/14883" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      </div>
+      <div class="job-flow">
+        <div class="job-flow-step"><span class="step-badge">1</span> 简历筛选 → 一面（存希）</div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">2</span> <a href="https://docs.xiaohongshu.com/sheet/fdf7f581c03f9828e28b9662a8a33126?smParams=4FoVLeYo5O5SalH0JkjCOGcpcj" target="_blank" onclick="event.stopPropagation()">又思专场二面</a></div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">3</span> <a href="https://docs.xiaohongshu.com/sheet/92f221707b891d1a773d311f34090973?smParams=665Xcn6MwhBL2HhQHs4aG6Kcwneifn9EFfuWhPTJH2BCHZ8oQwl5QxHoMAkjm7vT6MENXcNP3cBelD4sH" target="_blank" onclick="event.stopPropagation()">CBD专场终面</a></div>
+      </div>
     </div>
     <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/15767','_blank')">
-      <div class="job-info">
-        <div class="job-title">商业化-美护/服饰行业IP营销专家</div>
-        <div class="job-meta">尤弥（汰换）</div>
-      </div><span class="job-tbh">×1</span>
-      
-      <span class="job-priority p2">P2</span>
-      <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/15767" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      <div class="job-item-top">
+        <div class="job-info">
+          <div class="job-title">商业化-美护/服饰行业IP营销专家</div>
+          <div class="job-meta">尤弥（汰换）</div>
+        </div><span class="job-tbh">×1</span>
+        <span class="job-priority p2">P2</span>
+        <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/15767" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      </div>
+      <div class="job-flow">
+        <div class="job-flow-step"><span class="step-badge">1</span> 简历筛选 → 一面（尤弥）</div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">2</span> <a href="https://docs.xiaohongshu.com/sheet/fdf7f581c03f9828e28b9662a8a33126?smParams=4FoVLeYo5O5SalH0JkjCOGcpcj" target="_blank" onclick="event.stopPropagation()">又思专场二面</a></div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">3</span> <a href="https://docs.xiaohongshu.com/sheet/92f221707b891d1a773d311f34090973?smParams=665Xcn6MwhBL2HhQHs4aG6Kcwneifn9EFfuWhPTJH2BCHZ8oQwl5QxHoMAkjm7vT6MENXcNP3cBelD4sH" target="_blank" onclick="event.stopPropagation()">CBD专场终面</a></div>
+      </div>
     </div>
     <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/10103?active=channel','_blank')">
-      <div class="job-info">
-        <div class="job-title">商业化-耐消行业IP营销专家</div>
-        <div class="job-meta">未希（汰换）</div>
-      </div><span class="job-tbh">×1</span>
-      
-      <span class="job-priority p2">P2</span>
-      <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/10103?active=channel" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      <div class="job-item-top">
+        <div class="job-info">
+          <div class="job-title">商业化-耐消行业IP营销专家</div>
+          <div class="job-meta">未希（汰换）</div>
+        </div><span class="job-tbh">×1</span>
+        <span class="job-priority p2">P2</span>
+        <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/10103?active=channel" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      </div>
+      <div class="job-flow">
+        <div class="job-flow-step"><span class="step-badge">1</span> 简历筛选 → 一面（未希）</div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">2</span> <a href="https://docs.xiaohongshu.com/sheet/fdf7f581c03f9828e28b9662a8a33126?smParams=4FoVLeYo5O5SalH0JkjCOGcpcj" target="_blank" onclick="event.stopPropagation()">又思专场二面</a></div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">3</span> <a href="https://docs.xiaohongshu.com/sheet/92f221707b891d1a773d311f34090973?smParams=665Xcn6MwhBL2HhQHs4aG6Kcwneifn9EFfuWhPTJH2BCHZ8oQwl5QxHoMAkjm7vT6MENXcNP3cBelD4sH" target="_blank" onclick="event.stopPropagation()">CBD专场终面</a></div>
+      </div>
     </div>
     <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/19038','_blank')">
-      <div class="job-info">
-        <div class="job-title">商业化-行业PM专家（大生服+互联网）</div>
-        <div class="job-meta">存希（汰换）· 互联网PM经验优先</div>
-      </div><span class="job-tbh">×1</span>
-      
-      <span class="job-priority p2">P2</span>
-      <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/19038" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      <div class="job-item-top">
+        <div class="job-info">
+          <div class="job-title">商业化-行业PM专家（大生服+互联网）</div>
+          <div class="job-meta">存希（汰换）· 互联网PM经验优先</div>
+        </div><span class="job-tbh">×1</span>
+        <span class="job-priority p2">P2</span>
+        <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/19038" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      </div>
+      <div class="job-flow">
+        <div class="job-flow-step"><span class="step-badge">1</span> 简历筛选 → 一面（存希）</div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">2</span> <a href="https://docs.xiaohongshu.com/sheet/fdf7f581c03f9828e28b9662a8a33126?smParams=4FoVLeYo5O5SalH0JkjCOGcpcj" target="_blank" onclick="event.stopPropagation()">又思专场二面</a></div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">3</span> <a href="https://docs.xiaohongshu.com/sheet/92f221707b891d1a773d311f34090973?smParams=665Xcn6MwhBL2HhQHs4aG6Kcwneifn9EFfuWhPTJH2BCHZ8oQwl5QxHoMAkjm7vT6MENXcNP3cBelD4sH" target="_blank" onclick="event.stopPropagation()">CBD专场终面</a></div>
+      </div>
     </div>
   </div>
 
   <!-- BIZ -->
   <div class="job-panel" id="panel-biz">
     <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/18136','_blank')">
-      <div class="job-info">
-        <div class="job-title">商业市场策略传播</div>
-        <div class="job-meta">允浩 · 宏观策略传播，WILL大会/博客/办会</div>
-      </div><span class="job-tbh">×1</span>
-      
-      <span class="job-priority p0">P0 急缺</span>
-      <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/18136" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      <div class="job-item-top">
+        <div class="job-info">
+          <div class="job-title">商业市场策略传播</div>
+          <div class="job-meta">允浩 · 宏观策略传播，WILL大会/博客/办会</div>
+        </div><span class="job-tbh">×1</span>
+        <span class="job-priority p1">P1</span>
+        <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/18136" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      </div>
+      <div class="job-flow">
+        <div class="job-flow-step"><span class="step-badge">1</span> 简历筛选 → 一面（允浩）</div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">2</span> <a href="https://docs.xiaohongshu.com/sheet/fdf7f581c03f9828e28b9662a8a33126?smParams=4FoVLeYo5O5SalH0JkjCOGcpcj" target="_blank" onclick="event.stopPropagation()">又思专场二面</a></div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">3</span> <a href="https://docs.xiaohongshu.com/sheet/92f221707b891d1a773d311f34090973?smParams=665Xcn6MwhBL2HhQHs4aG6Kcwneifn9EFfuWhPTJH2BCHZ8oQwl5QxHoMAkjm7vT6MENXcNP3cBelD4sH" target="_blank" onclick="event.stopPropagation()">CBD专场终面</a></div>
+      </div>
     </div>
     <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/15093','_blank')">
-      <div class="job-info">
-        <div class="job-title">商业市场——营销增长运营</div>
-        <div class="job-meta">雷米 · 增长运营/用增背景，中小商家拉新</div>
-      </div><span class="job-tbh">×1</span>
-      
-      <span class="job-priority p1">P1</span>
-      <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/15093" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      <div class="job-item-top">
+        <div class="job-info">
+          <div class="job-title">商业市场——营销增长运营</div>
+          <div class="job-meta">雷米 · 增长运营/用增背景，中小商家拉新</div>
+        </div><span class="job-tbh">×1</span>
+        <span class="job-priority p1">P1</span>
+        <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/15093" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      </div>
+      <div class="job-flow">
+        <div class="job-flow-step"><span class="step-badge">1</span> 简历筛选 → 一面（雷米）</div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">2</span> <a href="https://docs.xiaohongshu.com/sheet/fdf7f581c03f9828e28b9662a8a33126?smParams=4FoVLeYo5O5SalH0JkjCOGcpcj" target="_blank" onclick="event.stopPropagation()">又思专场二面</a></div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">3</span> <a href="https://docs.xiaohongshu.com/sheet/92f221707b891d1a773d311f34090973?smParams=665Xcn6MwhBL2HhQHs4aG6Kcwneifn9EFfuWhPTJH2BCHZ8oQwl5QxHoMAkjm7vT6MENXcNP3cBelD4sH" target="_blank" onclick="event.stopPropagation()">CBD专场终面</a></div>
+      </div>
     </div>
   </div>
 
   <!-- TRAIN -->
   <div class="job-panel" id="panel-train">
     <div class="job-item" onclick="window.open('https://hr.xiaohongshu.com/position-manage/view/17489','_blank')">
-      <div class="job-info">
-        <div class="job-title">业务培训专家</div>
-        <div class="job-meta">伽马 · 真正的能力诊断+培训落地，非纯接需</div>
-      </div><span class="job-tbh">×2</span>
-      
-      <span class="job-priority p0">P0 急缺</span>
-      <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/17489" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      <div class="job-item-top">
+        <div class="job-info">
+          <div class="job-title">业务培训专家</div>
+          <div class="job-meta">伽马 · 真正的能力诊断+培训落地，非纯接需</div>
+        </div><span class="job-tbh">×2</span>
+        <span class="job-priority p1">P1</span>
+        <a class="job-btn" href="https://hr.xiaohongshu.com/position-manage/view/17489" target="_blank" onclick="event.stopPropagation()">查看职位</a>
+      </div>
+      <div class="job-flow">
+        <div class="job-flow-step"><span class="step-badge">1</span> 简历筛选 → 一面（伽马）</div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">2</span> <a href="https://docs.xiaohongshu.com/sheet/fdf7f581c03f9828e28b9662a8a33126?smParams=4FoVLeYo5O5SalH0JkjCOGcpcj" target="_blank" onclick="event.stopPropagation()">又思专场二面</a></div>
+        <span class="job-flow-arrow">›</span>
+        <div class="job-flow-step"><span class="step-badge">3</span> <a href="https://docs.xiaohongshu.com/sheet/92f221707b891d1a773d311f34090973?smParams=665Xcn6MwhBL2HhQHs4aG6Kcwneifn9EFfuWhPTJH2BCHZ8oQwl5QxHoMAkjm7vT6MENXcNP3cBelD4sH" target="_blank" onclick="event.stopPropagation()">CBD专场终面</a></div>
+      </div>
     </div>
   </div>
 </section>
