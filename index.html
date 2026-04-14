@@ -395,6 +395,7 @@
   <ul class="nav-links">
     <li><a href="#highlight">为什么选我们</a></li>
     <li><a href="#overview">部门介绍</a></li>
+    <li><a href="#funnel">简历漏斗</a></li>
     <li><a href="#jobs">招聘需求</a></li>
     <li><a href="#process">面试流程</a></li>
   </ul>
@@ -632,6 +633,405 @@
     </div>
 
   </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FUNNEL -->
+<section id="funnel" style="padding:80px 40px;max-width:1200px;margin:0 auto;">
+  <div class="section-label">简历漏斗</div>
+  <div class="section-title">实时招聘进展</div>
+  <div class="section-desc">数据来自 HR 系统，反映各岗位当前简历处理状态。<span id="funnel-update-time" style="font-size:13px;color:var(--text-muted);"></span></div>
+
+  <style>
+    .funnel-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; margin-top: 8px; }
+    .funnel-card {
+      background: white; border: 1.5px solid var(--border);
+      border-radius: 16px; padding: 20px 24px;
+      transition: all 0.2s;
+    }
+    .funnel-card:hover { border-color: var(--red-light); box-shadow: 0 4px 16px rgba(255,36,66,0.08); }
+    .funnel-card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 16px; gap: 8px; }
+    .funnel-job-name { font-size: 14px; font-weight: 700; color: var(--text-primary); line-height: 1.4; flex: 1; }
+    .funnel-total { font-size: 11px; color: var(--text-muted); background: #f5f5f5; padding: 3px 8px; border-radius: 8px; white-space: nowrap; }
+    .funnel-stages { display: flex; gap: 0; }
+    .funnel-stage {
+      flex: 1; text-align: center; padding: 12px 6px;
+      border-radius: 10px; position: relative;
+    }
+    .funnel-stage + .funnel-stage::before {
+      content: '›'; position: absolute; left: -4px; top: 50%; transform: translateY(-50%);
+      color: #ddd; font-size: 16px;
+    }
+    .funnel-stage-count {
+      font-size: 24px; font-weight: 700; font-family: 'Poppins', sans-serif;
+      line-height: 1.1; margin-bottom: 4px;
+    }
+    .funnel-stage-label { font-size: 11px; color: var(--text-muted); font-weight: 500; }
+    .stage-resume .funnel-stage-count { color: #7C3AED; }
+    .stage-resume { background: rgba(124,58,237,0.06); }
+    .stage-dept .funnel-stage-count { color: #EA580C; }
+    .stage-dept { background: rgba(234,88,12,0.06); }
+    .stage-interview .funnel-stage-count { color: var(--red); }
+    .stage-interview { background: rgba(255,36,66,0.06); }
+    .funnel-priority-tag { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 8px; margin-bottom: 6px; }
+    .funnel-bar-wrap { margin-top: 14px; }
+    .funnel-bar-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+    .funnel-bar-label { font-size: 11px; color: var(--text-muted); width: 52px; text-align: right; flex-shrink: 0; }
+    .funnel-bar-track { flex: 1; height: 6px; background: #f0f0f0; border-radius: 4px; overflow: hidden; }
+    .funnel-bar-fill { height: 100%; border-radius: 4px; transition: width 0.6s ease; }
+    .bar-resume { background: #7C3AED; }
+    .bar-dept { background: #EA580C; }
+    .bar-interview { background: var(--red); }
+    .funnel-bar-val { font-size: 11px; font-weight: 700; color: var(--text-secondary); width: 24px; }
+    .funnel-section-title { font-size: 13px; font-weight: 700; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; margin: 32px 0 12px; display: flex; align-items: center; gap: 8px; }
+    .funnel-section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  </style>
+
+  <div class="funnel-section-title"><span>🔴 P0 · 电商市场</span></div>
+  <div class="funnel-grid">
+    <div class="funnel-card">
+      <div class="funnel-card-header">
+        <div>
+          <div class="funnel-job-name">电商市场交易大促营销</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">用户市场组 · 来克 · ×3</div>
+        </div>
+        <span class="funnel-total">共 1108 人</span>
+      </div>
+      <div class="funnel-stages">
+        <div class="funnel-stage stage-resume"><div class="funnel-stage-count">112</div><div class="funnel-stage-label">待初筛</div></div>
+        <div class="funnel-stage stage-dept"><div class="funnel-stage-count">5</div><div class="funnel-stage-label">待评估</div></div>
+        <div class="funnel-stage stage-interview"><div class="funnel-stage-count">27</div><div class="funnel-stage-label">待面试</div></div>
+      </div>
+      <div class="funnel-bar-wrap">
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待初筛</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-resume" style="width:100%"></div></div><span class="funnel-bar-val">112</span></div>
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待评估</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-dept" style="width:4%"></div></div><span class="funnel-bar-val">5</span></div>
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待面试</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-interview" style="width:24%"></div></div><span class="funnel-bar-val">27</span></div>
+      </div>
+    </div>
+    <div class="funnel-card">
+      <div class="funnel-card-header">
+        <div>
+          <div class="funnel-job-name">电商市场B端品牌传播专家</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">电商市场&商家赋能 · 伽马 · ×3</div>
+        </div>
+        <span class="funnel-total">共 407 人</span>
+      </div>
+      <div class="funnel-stages">
+        <div class="funnel-stage stage-resume"><div class="funnel-stage-count">19</div><div class="funnel-stage-label">待初筛</div></div>
+        <div class="funnel-stage stage-dept"><div class="funnel-stage-count">2</div><div class="funnel-stage-label">待评估</div></div>
+        <div class="funnel-stage stage-interview"><div class="funnel-stage-count">2</div><div class="funnel-stage-label">待面试</div></div>
+      </div>
+      <div class="funnel-bar-wrap">
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待初筛</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-resume" style="width:100%"></div></div><span class="funnel-bar-val">19</span></div>
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待评估</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-dept" style="width:11%"></div></div><span class="funnel-bar-val">2</span></div>
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待面试</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-interview" style="width:11%"></div></div><span class="funnel-bar-val">2</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="funnel-section-title"><span>🟠 P1 · 商业市场 / IP营销 / 培训</span></div>
+  <div class="funnel-grid">
+    <div class="funnel-card">
+      <div class="funnel-card-header">
+        <div>
+          <div class="funnel-job-name">商业市场策略传播</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">策略传播 · 允浩 · ×1</div>
+        </div>
+        <span class="funnel-total">共 722 人</span>
+      </div>
+      <div class="funnel-stages">
+        <div class="funnel-stage stage-resume"><div class="funnel-stage-count">77</div><div class="funnel-stage-label">待初筛</div></div>
+        <div class="funnel-stage stage-dept"><div class="funnel-stage-count">0</div><div class="funnel-stage-label">待评估</div></div>
+        <div class="funnel-stage stage-interview"><div class="funnel-stage-count">3</div><div class="funnel-stage-label">待面试</div></div>
+      </div>
+      <div class="funnel-bar-wrap">
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待初筛</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-resume" style="width:100%"></div></div><span class="funnel-bar-val">77</span></div>
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待评估</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-dept" style="width:0%"></div></div><span class="funnel-bar-val">0</span></div>
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待面试</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-interview" style="width:4%"></div></div><span class="funnel-bar-val">3</span></div>
+      </div>
+    </div>
+    <div class="funnel-card">
+      <div class="funnel-card-header">
+        <div>
+          <div class="funnel-job-name">商业市场营销增长运营</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">营销增长 · 雷米 · ×1</div>
+        </div>
+        <span class="funnel-total">共 582 人</span>
+      </div>
+      <div class="funnel-stages">
+        <div class="funnel-stage stage-resume"><div class="funnel-stage-count">56</div><div class="funnel-stage-label">待初筛</div></div>
+        <div class="funnel-stage stage-dept"><div class="funnel-stage-count">3</div><div class="funnel-stage-label">待评估</div></div>
+        <div class="funnel-stage stage-interview"><div class="funnel-stage-count">4</div><div class="funnel-stage-label">待面试</div></div>
+      </div>
+      <div class="funnel-bar-wrap">
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待初筛</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-resume" style="width:100%"></div></div><span class="funnel-bar-val">56</span></div>
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待评估</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-dept" style="width:5%"></div></div><span class="funnel-bar-val">3</span></div>
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待面试</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-interview" style="width:7%"></div></div><span class="funnel-bar-val">4</span></div>
+      </div>
+    </div>
+    <div class="funnel-card">
+      <div class="funnel-card-header">
+        <div>
+          <div class="funnel-job-name">商业化-媒介专家</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">媒介与PM管理 · 佩吉 · ×1</div>
+        </div>
+        <span class="funnel-total">共 649 人</span>
+      </div>
+      <div class="funnel-stages">
+        <div class="funnel-stage stage-resume"><div class="funnel-stage-count">42</div><div class="funnel-stage-label">待初筛</div></div>
+        <div class="funnel-stage stage-dept"><div class="funnel-stage-count">2</div><div class="funnel-stage-label">待评估</div></div>
+        <div class="funnel-stage stage-interview"><div class="funnel-stage-count">4</div><div class="funnel-stage-label">待面试</div></div>
+      </div>
+      <div class="funnel-bar-wrap">
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待初筛</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-resume" style="width:100%"></div></div><span class="funnel-bar-val">42</span></div>
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待评估</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-dept" style="width:5%"></div></div><span class="funnel-bar-val">2</span></div>
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待面试</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-interview" style="width:10%"></div></div><span class="funnel-bar-val">4</span></div>
+      </div>
+    </div>
+    <div class="funnel-card">
+      <div class="funnel-card-header">
+        <div>
+          <div class="funnel-job-name">商业化-活动策划</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">媒介与PM管理 · 阿江 POC · ×1</div>
+        </div>
+        <span class="funnel-total">共 1664 人</span>
+      </div>
+      <div class="funnel-stages">
+        <div class="funnel-stage stage-resume"><div class="funnel-stage-count">231</div><div class="funnel-stage-label">待初筛</div></div>
+        <div class="funnel-stage stage-dept"><div class="funnel-stage-count">3</div><div class="funnel-stage-label">待评估</div></div>
+        <div class="funnel-stage stage-interview"><div class="funnel-stage-count">2</div><div class="funnel-stage-label">待面试</div></div>
+      </div>
+      <div class="funnel-bar-wrap">
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待初筛</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-resume" style="width:100%"></div></div><span class="funnel-bar-val">231</span></div>
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待评估</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-dept" style="width:1%"></div></div><span class="funnel-bar-val">3</span></div>
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待面试</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-interview" style="width:1%"></div></div><span class="funnel-bar-val">2</span></div>
+      </div>
+    </div>
+    <div class="funnel-card">
+      <div class="funnel-card-header">
+        <div>
+          <div class="funnel-job-name">业务培训专家</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">业务内训 · 伽马 · ×2</div>
+        </div>
+        <span class="funnel-total">共 695 人</span>
+      </div>
+      <div class="funnel-stages">
+        <div class="funnel-stage stage-resume"><div class="funnel-stage-count">31</div><div class="funnel-stage-label">待初筛</div></div>
+        <div class="funnel-stage stage-dept"><div class="funnel-stage-count">0</div><div class="funnel-stage-label">待评估</div></div>
+        <div class="funnel-stage stage-interview"><div class="funnel-stage-count">0</div><div class="funnel-stage-label">待面试</div></div>
+      </div>
+      <div class="funnel-bar-wrap">
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待初筛</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-resume" style="width:100%"></div></div><span class="funnel-bar-val">31</span></div>
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待评估</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-dept" style="width:0%"></div></div><span class="funnel-bar-val">0</span></div>
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待面试</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-interview" style="width:0%"></div></div><span class="funnel-bar-val">0</span></div>
+      </div>
+    </div>
+    <div class="funnel-card">
+      <div class="funnel-card-header">
+        <div>
+          <div class="funnel-job-name">商业化-平台大事件IP营销专家</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">平台大事件 · 佩吉 · ×1</div>
+        </div>
+        <span class="funnel-total">共 563 人</span>
+      </div>
+      <div class="funnel-stages">
+        <div class="funnel-stage stage-resume"><div class="funnel-stage-count">20</div><div class="funnel-stage-label">待初筛</div></div>
+        <div class="funnel-stage stage-dept"><div class="funnel-stage-count">2</div><div class="funnel-stage-label">待评估</div></div>
+        <div class="funnel-stage stage-interview"><div class="funnel-stage-count">7</div><div class="funnel-stage-label">待面试</div></div>
+      </div>
+      <div class="funnel-bar-wrap">
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待初筛</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-resume" style="width:100%"></div></div><span class="funnel-bar-val">20</span></div>
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待评估</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-dept" style="width:10%"></div></div><span class="funnel-bar-val">2</span></div>
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待面试</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-interview" style="width:35%"></div></div><span class="funnel-bar-val">7</span></div>
+      </div>
+    </div>
+    <div class="funnel-card">
+      <div class="funnel-card-header">
+        <div>
+          <div class="funnel-job-name">商业化-平台大事件PM</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">媒介与PM管理 · 佩吉 · ×1</div>
+        </div>
+        <span class="funnel-total">共 1491 人</span>
+      </div>
+      <div class="funnel-stages">
+        <div class="funnel-stage stage-resume"><div class="funnel-stage-count">51</div><div class="funnel-stage-label">待初筛</div></div>
+        <div class="funnel-stage stage-dept"><div class="funnel-stage-count">5</div><div class="funnel-stage-label">待评估</div></div>
+        <div class="funnel-stage stage-interview"><div class="funnel-stage-count">11</div><div class="funnel-stage-label">待面试</div></div>
+      </div>
+      <div class="funnel-bar-wrap">
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待初筛</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-resume" style="width:100%"></div></div><span class="funnel-bar-val">51</span></div>
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待评估</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-dept" style="width:10%"></div></div><span class="funnel-bar-val">5</span></div>
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待面试</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-interview" style="width:22%"></div></div><span class="funnel-bar-val">11</span></div>
+      </div>
+    </div>
+    <div class="funnel-card">
+      <div class="funnel-card-header">
+        <div>
+          <div class="funnel-job-name">商业化-汽车行业IP营销专家</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">互动营销 · 吉森 · ×2</div>
+        </div>
+        <span class="funnel-total">共 2 人</span>
+      </div>
+      <div class="funnel-stages">
+        <div class="funnel-stage stage-resume"><div class="funnel-stage-count">0</div><div class="funnel-stage-label">待初筛</div></div>
+        <div class="funnel-stage stage-dept"><div class="funnel-stage-count">1</div><div class="funnel-stage-label">待评估</div></div>
+        <div class="funnel-stage stage-interview"><div class="funnel-stage-count">0</div><div class="funnel-stage-label">待面试</div></div>
+      </div>
+      <div class="funnel-bar-wrap">
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待初筛</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-resume" style="width:0%"></div></div><span class="funnel-bar-val">0</span></div>
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待评估</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-dept" style="width:100%"></div></div><span class="funnel-bar-val">1</span></div>
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待面试</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-interview" style="width:0%"></div></div><span class="funnel-bar-val">0</span></div>
+      </div>
+    </div>
+    <div class="funnel-card">
+      <div class="funnel-card-header">
+        <div>
+          <div class="funnel-job-name">商业化-内容运营IP营销专家</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">内容运营 · 地球 · ×1</div>
+        </div>
+        <span class="funnel-total">共 1398 人</span>
+      </div>
+      <div class="funnel-stages">
+        <div class="funnel-stage stage-resume"><div class="funnel-stage-count">109</div><div class="funnel-stage-label">待初筛</div></div>
+        <div class="funnel-stage stage-dept"><div class="funnel-stage-count">0</div><div class="funnel-stage-label">待评估</div></div>
+        <div class="funnel-stage stage-interview"><div class="funnel-stage-count">3</div><div class="funnel-stage-label">待面试</div></div>
+      </div>
+      <div class="funnel-bar-wrap">
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待初筛</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-resume" style="width:100%"></div></div><span class="funnel-bar-val">109</span></div>
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待评估</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-dept" style="width:0%"></div></div><span class="funnel-bar-val">0</span></div>
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待面试</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-interview" style="width:3%"></div></div><span class="funnel-bar-val">3</span></div>
+      </div>
+    </div>
+    <div class="funnel-card">
+      <div class="funnel-card-header">
+        <div>
+          <div class="funnel-job-name">商业化娱乐营销</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">娱乐营销 · 科林 · ×1</div>
+        </div>
+        <span class="funnel-total">共 1691 人</span>
+      </div>
+      <div class="funnel-stages">
+        <div class="funnel-stage stage-resume"><div class="funnel-stage-count">74</div><div class="funnel-stage-label">待初筛</div></div>
+        <div class="funnel-stage stage-dept"><div class="funnel-stage-count">1</div><div class="funnel-stage-label">待评估</div></div>
+        <div class="funnel-stage stage-interview"><div class="funnel-stage-count">5</div><div class="funnel-stage-label">待面试</div></div>
+      </div>
+      <div class="funnel-bar-wrap">
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待初筛</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-resume" style="width:100%"></div></div><span class="funnel-bar-val">74</span></div>
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待评估</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-dept" style="width:1%"></div></div><span class="funnel-bar-val">1</span></div>
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待面试</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-interview" style="width:7%"></div></div><span class="funnel-bar-val">5</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="funnel-section-title"><span>🟡 P2 · IP营销中心（行业营销）</span></div>
+  <div class="funnel-grid">
+    <div class="funnel-card">
+      <div class="funnel-card-header">
+        <div>
+          <div class="funnel-job-name">快消IP营销策划/专家</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">行业营销四组 · 地球 · ×2</div>
+        </div>
+        <span class="funnel-total">共 1581 人</span>
+      </div>
+      <div class="funnel-stages">
+        <div class="funnel-stage stage-resume"><div class="funnel-stage-count">41</div><div class="funnel-stage-label">待初筛</div></div>
+        <div class="funnel-stage stage-dept"><div class="funnel-stage-count">1</div><div class="funnel-stage-label">待评估</div></div>
+        <div class="funnel-stage stage-interview"><div class="funnel-stage-count">11</div><div class="funnel-stage-label">待面试</div></div>
+      </div>
+      <div class="funnel-bar-wrap">
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待初筛</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-resume" style="width:100%"></div></div><span class="funnel-bar-val">41</span></div>
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待评估</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-dept" style="width:2%"></div></div><span class="funnel-bar-val">1</span></div>
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待面试</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-interview" style="width:27%"></div></div><span class="funnel-bar-val">11</span></div>
+      </div>
+    </div>
+    <div class="funnel-card">
+      <div class="funnel-card-header">
+        <div>
+          <div class="funnel-job-name">大生服&互联网IP营销专家</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">行业营销三组 · 存希 · ×3</div>
+        </div>
+        <span class="funnel-total">共 530 人</span>
+      </div>
+      <div class="funnel-stages">
+        <div class="funnel-stage stage-resume"><div class="funnel-stage-count">41</div><div class="funnel-stage-label">待初筛</div></div>
+        <div class="funnel-stage stage-dept"><div class="funnel-stage-count">1</div><div class="funnel-stage-label">待评估</div></div>
+        <div class="funnel-stage stage-interview"><div class="funnel-stage-count">7</div><div class="funnel-stage-label">待面试</div></div>
+      </div>
+      <div class="funnel-bar-wrap">
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待初筛</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-resume" style="width:100%"></div></div><span class="funnel-bar-val">41</span></div>
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待评估</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-dept" style="width:2%"></div></div><span class="funnel-bar-val">1</span></div>
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待面试</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-interview" style="width:17%"></div></div><span class="funnel-bar-val">7</span></div>
+      </div>
+    </div>
+    <div class="funnel-card">
+      <div class="funnel-card-header">
+        <div>
+          <div class="funnel-job-name">美护/服饰IP营销专家</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">行业营销一组 · 尤弥 · ×1</div>
+        </div>
+        <span class="funnel-total">共 337 人</span>
+      </div>
+      <div class="funnel-stages">
+        <div class="funnel-stage stage-resume"><div class="funnel-stage-count">27</div><div class="funnel-stage-label">待初筛</div></div>
+        <div class="funnel-stage stage-dept"><div class="funnel-stage-count">0</div><div class="funnel-stage-label">待评估</div></div>
+        <div class="funnel-stage stage-interview"><div class="funnel-stage-count">3</div><div class="funnel-stage-label">待面试</div></div>
+      </div>
+      <div class="funnel-bar-wrap">
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待初筛</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-resume" style="width:100%"></div></div><span class="funnel-bar-val">27</span></div>
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待评估</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-dept" style="width:0%"></div></div><span class="funnel-bar-val">0</span></div>
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待面试</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-interview" style="width:11%"></div></div><span class="funnel-bar-val">3</span></div>
+      </div>
+    </div>
+    <div class="funnel-card">
+      <div class="funnel-card-header">
+        <div>
+          <div class="funnel-job-name">耐消行业IP营销专家</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">行业营销二组 · 未希 · ×1</div>
+        </div>
+        <span class="funnel-total">共 990 人</span>
+      </div>
+      <div class="funnel-stages">
+        <div class="funnel-stage stage-resume"><div class="funnel-stage-count">25</div><div class="funnel-stage-label">待初筛</div></div>
+        <div class="funnel-stage stage-dept"><div class="funnel-stage-count">0</div><div class="funnel-stage-label">待评估</div></div>
+        <div class="funnel-stage stage-interview"><div class="funnel-stage-count">0</div><div class="funnel-stage-label">待面试</div></div>
+      </div>
+      <div class="funnel-bar-wrap">
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待初筛</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-resume" style="width:100%"></div></div><span class="funnel-bar-val">25</span></div>
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待评估</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-dept" style="width:0%"></div></div><span class="funnel-bar-val">0</span></div>
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待面试</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-interview" style="width:0%"></div></div><span class="funnel-bar-val">0</span></div>
+      </div>
+    </div>
+    <div class="funnel-card">
+      <div class="funnel-card-header">
+        <div>
+          <div class="funnel-job-name">行业PM专家（大生服+互联网）</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">行业营销三组 · 存希 · ×1</div>
+        </div>
+        <span class="funnel-total">共 67 人</span>
+      </div>
+      <div class="funnel-stages">
+        <div class="funnel-stage stage-resume"><div class="funnel-stage-count">18</div><div class="funnel-stage-label">待初筛</div></div>
+        <div class="funnel-stage stage-dept"><div class="funnel-stage-count">0</div><div class="funnel-stage-label">待评估</div></div>
+        <div class="funnel-stage stage-interview"><div class="funnel-stage-count">5</div><div class="funnel-stage-label">待面试</div></div>
+      </div>
+      <div class="funnel-bar-wrap">
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待初筛</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-resume" style="width:100%"></div></div><span class="funnel-bar-val">18</span></div>
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待评估</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-dept" style="width:0%"></div></div><span class="funnel-bar-val">0</span></div>
+        <div class="funnel-bar-row"><span class="funnel-bar-label">待面试</span><div class="funnel-bar-track"><div class="funnel-bar-fill bar-interview" style="width:28%"></div></div><span class="funnel-bar-val">5</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:24px;padding:16px 20px;background:#FAFAFA;border-radius:12px;border:1px solid var(--border);font-size:12px;color:var(--text-muted);">
+    📊 <strong>数据说明：</strong>「待初筛」= HR 简历初筛阶段；「待评估」= 已转发用人部门，等待 L1 反馈；「待面试」= 已安排或待安排面试。数据快照时间：<span id="funnel-snap-time"></span>
+  </div>
+  <script>
+    const now = new Date();
+    const fmt = d => d.toLocaleString('zh-CN', {month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'});
+    document.getElementById('funnel-update-time') && (document.getElementById('funnel-update-time').textContent = '数据截至 ' + fmt(now));
+    document.getElementById('funnel-snap-time') && (document.getElementById('funnel-snap-time').textContent = fmt(now));
+  </script>
 </section>
 
 <div class="divider"></div>
